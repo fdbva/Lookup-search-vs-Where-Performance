@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace DictionaryLookupSearchGenericExample
+namespace AmbienteSimuladoClienteCompra
 {
     public class AmbienteSimuladoTeste
     {
         private const int QuantidadeDeClientes = 50000;
         private const int QuantidadeDeCompras = 5000;
-        private static Dictionary<string, Cliente> Clientes { get; set; } = new Dictionary<string, Cliente>();
-        private static List<Compra> Compras { get; set; } = new List<Compra>();
+        private ConcurrentDictionary<string, Cliente> Clientes { get; set; } = new ConcurrentDictionary<string, Cliente>();
+        private List<Compra> Compras { get; set; } = new List<Compra>();
 
         public void Run()
         {
@@ -37,7 +38,7 @@ namespace DictionaryLookupSearchGenericExample
             Console.WriteLine($"Tarefa otimizada terminou em {stopwatch.ElapsedMilliseconds}ms, somatório total foi de {somatorioSemSentido}");
         }
 
-        private static decimal AlgoritmoOtimizado()
+        public decimal AlgoritmoOtimizado()
         {
             decimal somatorioSemSentido;
             var lookupDeCompras = Compras.ToLookup(x => x.CpfCliente, x => x);
@@ -55,7 +56,7 @@ namespace DictionaryLookupSearchGenericExample
             return somatorioSemSentido;
         }
 
-        private static decimal AlgoritmoNaoOtimizado()
+        public decimal AlgoritmoNaoOtimizado()
         {
             var somatorioSemSentido = 0m;
             foreach (var cliente in Clientes)
@@ -71,7 +72,7 @@ namespace DictionaryLookupSearchGenericExample
             return somatorioSemSentido;
         }
 
-        private static void SetupInicial()
+        public void SetupInicial()
         {
             var randomGenerator = new Random();
             //Setup Inicial

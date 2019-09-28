@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using AmbienteSimuladoClienteCompra;
+using System;
 
 namespace DictionaryLookupSearchGenericExample
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             new AmbienteSimuladoTeste().Run();
