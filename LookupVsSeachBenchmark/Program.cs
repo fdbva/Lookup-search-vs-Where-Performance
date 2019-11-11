@@ -6,6 +6,8 @@ namespace LookupVsSeachBenchmark
     {
         static void Main(string[] args)
         {
+            //commit 1
+            //commit 2
             var summary = BenchmarkRunner.Run<LookupVsSearchBenchmarkExample>();
         }
     }
